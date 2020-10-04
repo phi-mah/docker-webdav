@@ -11,6 +11,9 @@ set -e
 #   ANONYMOUS_METHODS
 #   SSL_CERT
 
+/usr/sbin/groupmod -g ${WWW_GID:=$(id www-data -g)} www-data
+/usr/sbin/usermod -u ${WWW_UID:=$(id www-data -u)} www-data
+
 # Just in case this environment variable has gone missing.
 HTTPD_PREFIX="${HTTPD_PREFIX:-/usr/local/apache2}"
 
